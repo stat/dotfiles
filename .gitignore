@@ -1,0 +1,7 @@
+# Vundles
+.vim/bundles
+
+# Temp Files
+.DS_STORE
+*.swp
+*.swo
