@@ -1,0 +1,3 @@
+Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'fholgado/minibufexpl.vim'
