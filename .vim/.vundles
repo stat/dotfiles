@@ -1,3 +1,5 @@
+Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'tpope/vim-fugitive'
