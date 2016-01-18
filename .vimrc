@@ -138,3 +138,10 @@ nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
 nnoremap <Leader>gps :Gpush<CR>
 nnoremap <Leader>gpl git pull<CR>
+
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: NERDCommenter
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDCustomDelimiters = {
+    \ 'ruby': { 'left': '# '}
+\ }
