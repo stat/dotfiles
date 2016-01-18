@@ -3,3 +3,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-fugitive'
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
