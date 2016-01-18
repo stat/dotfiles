@@ -4,4 +4,5 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'airblade/vim-gitgutter'
