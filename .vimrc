@@ -131,5 +131,5 @@ nnoremap <Leader>gp :Ggrep<Space>
 nnoremap <Leader>gm :Gmove<Space>
 nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
-nnoremap <Leader>gps :Dispatch! git push<CR>
-nnoremap <Leader>gpl :Dispatch! git pull<CR>
+nnoremap <Leader>gps :Gpush<CR>
+nnoremap <Leader>gpl git pull<CR>
