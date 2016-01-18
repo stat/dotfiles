@@ -5,6 +5,4 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'airblade/vim-gitgutter'
-
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-markdown'
