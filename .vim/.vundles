@@ -6,3 +6,5 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'airblade/vim-gitgutter'
+
+Plugin 'rust-lang/rust.vim'

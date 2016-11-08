@@ -1,4 +1,5 @@
 let s:dirname = expand("<sfile>:p:h")
+
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,7 +91,6 @@ set nojoinspaces
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
-
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,6 +106,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~  " MacOSX/Linux
+
+let g:ctrlp_working_path_mode = 'ra'
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
@@ -143,5 +145,11 @@ nnoremap <Leader>gpl git pull<CR>
 " Plugin: NERDCommenter
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDCustomDelimiters = {
+    \ 'rust': { 'left': '// '},
     \ 'ruby': { 'left': '# '}
 \ }
+
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: Rust
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rust_recommended_style = 0
