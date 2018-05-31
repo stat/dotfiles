@@ -104,22 +104,29 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: CTRLP
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~  " MacOSX/Linux
 
 let g:ctrlp_working_path_mode = 'ra'
 
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 50
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  "\ 'file': '\.exe$\|\.so$\|\.dll$',
+  "\ 'link': 'some_bad_symbolic_links',
+  "\ }
 
-nmap <leader>f :CtrlPBuffer<CR>
-inoremap <leader><leader> <C-x><C-o>
+" let g:ctrlp_max_files = 0
+" let g:ctrlp_max_depth = 50
+
+" nmap <leader>f :CtrlPBuffer<CR>
+" inoremap <leader><leader> <C-x><C-o>
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Fugitive

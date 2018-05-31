@@ -1,10 +1,14 @@
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'rking/ag.vim'
+
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rust-lang/rust.vim'
