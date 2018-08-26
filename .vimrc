@@ -152,9 +152,9 @@ nnoremap <Leader>gpl git pull<CR>
 " Plugin: NERDCommenter
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDCustomDelimiters = {
-    \ 'c':    { 'left': '// '},
-    \ 'rust': { 'left': '// '},
-    \ 'ruby': { 'left': '# '}
+    \ 'c':    { 'left': '//'},
+    \ 'rust': { 'left': '//'},
+    \ 'ruby': { 'left': '#'}
 \ }
 
 let g:NERDDefaultAlign = 'left'
