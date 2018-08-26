@@ -83,7 +83,7 @@ let g:sh_noisk=1
 set modeline
 set modelines=3
 " Turn folding off for real, hopefully
-set foldmethod=indent
+set foldmethod=syntax
 "set nofoldenable
 " Insert only one space when joining lines that contain sentence-terminating
 " punctuation like `.`.
@@ -152,9 +152,13 @@ nnoremap <Leader>gpl git pull<CR>
 " Plugin: NERDCommenter
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDCustomDelimiters = {
+    \ 'c':    { 'left': '// '},
     \ 'rust': { 'left': '// '},
     \ 'ruby': { 'left': '# '}
 \ }
+
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Rust
