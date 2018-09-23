@@ -12,7 +12,6 @@ call vundle#begin()
 exe "source " . s:dirname . "/.vim/.vundles"
 call vundle#end()
 
-
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,6 +20,7 @@ call vundle#end()
 :set background=dark
 :color lettuce
 ":color grb256
+
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,6 +92,20 @@ set nojoinspaces
 set autoread
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MACROS
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let @1 = 'A€kl                                                                                079ldwj'
+let @2 = 'A€kl                                                          039ldwj'
+
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" augroup vimrc_autocmds
+"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"   autocmd BufEnter * match OverLength /\%82v.*/
+" augroup END
+
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
@@ -131,7 +145,6 @@ let g:ctrlp_custom_ignore = {
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Fugitive
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fugitive git bindings
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit -v -q<CR>
@@ -151,14 +164,15 @@ nnoremap <Leader>gpl git pull<CR>
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: NERDCommenter
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+
 let g:NERDCustomDelimiters = {
-    \ 'c':    { 'left': '//'},
+    \ 'c': { 'left': '//'},
     \ 'rust': { 'left': '//'},
     \ 'ruby': { 'left': '#'}
 \ }
-
-let g:NERDDefaultAlign = 'left'
-let g:NERDSpaceDelims = 1
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Rust
