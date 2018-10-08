@@ -57,11 +57,11 @@ flags = [
 'c',
 #C default header
 '-isystem',
-'/usr/lib/gcc/x86_64-linux-gnu',
+'/usr/lib/gcc/x86_64-pc-linux-gnu/'
 '-isystem',
-'/usr/lib/gcc/x86_64-linux-gnu/5/include',
+'/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include',
 '-isystem',
-'/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed',
+'/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed',
 '-isystem',
 '/usr/local/include',
 '-isystem',
