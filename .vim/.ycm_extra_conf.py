@@ -43,8 +43,8 @@ SOURCE_EXTENSIONS = [ '.c', '.cpp', '.cxx', '.cc', '.m', '.mm' ]
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
 '-Wall',
-'-Wextra',
-'-Werror',
+#  '-Wextra',
+#  '-Werror',
 # Definitions
 '-DDEBUG',
 '-DTESTING',
