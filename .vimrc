@@ -35,10 +35,13 @@ set nu
 set hidden
 " remember more commands and search history
 set history=10000
+
 set expandtab
+set smarttab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
 set autoindent
 set laststatus=2
 set showmatch
