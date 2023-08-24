@@ -1,4 +1,3 @@
-" Plugin 'rking/ag.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -10,5 +9,11 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rust-lang/rust.vim'
+Plugin 'fatih/vim-go'
+
+" Plugin 'dense-analysis/ale'
+
+" Plugin 'rking/ag.vim'
+" Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'chiel92/vim-autoformat'

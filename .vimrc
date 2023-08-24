@@ -1,3 +1,6 @@
+set encoding=utf-8
+set fileencoding=utf-8
+
 let s:dirname = expand("<sfile>:p:h")
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,6 +78,9 @@ syntax on
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
+
+hi LineNr ctermfg=241 guifg=#626262 "rgb=98,98,98
+
 filetype plugin indent on
 " use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
@@ -102,8 +108,8 @@ set autoread
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MACROS
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let @1 = 'A€kl                                                                                079ldwj'
-let @2 = 'A€kl                                                          039ldwj'
+let @1 = 'AÂ€kl                                                                                079ldwj'
+let @2 = 'AÂ€kl                                                          039ldwj'
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 
@@ -133,16 +139,16 @@ let g:ctrlp_working_path_mode = 'ra'
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 "let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  "\ 'file': '\.exe$\|\.so$\|\.dll$',
-  "\ 'link': 'some_bad_symbolic_links',
-  "\ }
+"\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+"\ 'file': '\.exe$\|\.so$\|\.dll$',
+"\ 'link': 'some_bad_symbolic_links',
+"\ }
 
 " let g:ctrlp_max_files = 0
 " let g:ctrlp_max_depth = 50
@@ -153,11 +159,12 @@ let g:ctrlp_custom_ignore = {
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Fugitive
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <Leader>ga :Git add %:p<CR><CR>
+" nnoremap <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>ga :Git add %<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit -v -q<CR>
-nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Git commit -v -q<CR>
+nnoremap <Leader>gt :Git commit -v -q %:p<CR>
+nnoremap <Leader>gd :Gdiffsplit <CR>
 nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>gw :Gwrite<CR><CR>
@@ -177,10 +184,10 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 
 let g:NERDCustomDelimiters = {
-    \ 'c': { 'left': '//'},
-    \ 'rust': { 'left': '//'},
-    \ 'ruby': { 'left': '#'}
-\ }
+      \ 'c': { 'left': '//'},
+      \ 'rust': { 'left': '//'},
+      \ 'ruby': { 'left': '#'}
+      \ }
 
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: Rust
@@ -191,3 +198,61 @@ let g:rust_recommended_style = 0
 " Plugin: YCM
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+nnoremap <leader>yjd :YcmCompleter GoTo<CR>
+nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
+
+
+
+
+
+
+
+nnoremap <C-b> :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+
+
+let g:go_addtags_transform = 'camelcase'
+:command -range -nargs=* GoTagsAdd <line1>,<line2>call GoTagsAdd(<f-args>)
+function! GoTagsAdd(...) range
+  let filename = expand('%:t')
+  let line = a:firstline . ',' . a:lastline
+  let cmds = ['!gomodifytags']
+  call add(cmds, '-file')
+  call add(cmds, filename)
+  call add(cmds, '-line')
+  call add(cmds, line)
+  call add(cmds, '--skip-unexported')
+  call add(cmds, '-w --quiet')
+  let cmd = join(cmds, " ")
+
+  if a:0 > 0
+    let tags = a:1
+    if tags != '--'
+      call add(cmds, '-add-tags')
+      call add(cmds, tags)
+    endif
+  else
+    call add(cmds, '-add-tags json')
+  endif
+
+  if a:0 > 1
+    let options = a:2
+    if options != '--'
+      call add(cmds, '-add-options')
+      call add(cmds, options)
+    endif
+  else
+    call add(cmds, '-add-options json=omitempty')
+  endif
+
+  if a:0 > 2
+    let transform = a:2
+    if transform != '--'
+      call add(cmds, '-transform')
+      call add(cmds, transform)
+    endif
+  else
+    call add(cmds, '-transform camelcase')
+  endif
+
+  execute join(cmds, " ")
+endfunction

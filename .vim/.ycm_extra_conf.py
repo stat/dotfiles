@@ -55,6 +55,10 @@ flags = [
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c',
+'-I', '.',
+'-I', './src/',
+'-I', './test/',
+'-I', './include/',
 #C default header
 '-isystem',
 '/usr/lib/gcc/x86_64-pc-linux-gnu/'
