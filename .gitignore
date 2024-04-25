@@ -1,5 +1,5 @@
-# Vundles
-.vim/bundles
+# Plug
+.vim/plugged
 
 # Temp Files
 .DS_STORE

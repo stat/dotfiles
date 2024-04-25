@@ -1,258 +1,154 @@
-set encoding=utf-8
-set fileencoding=utf-8
+"
+" Enforce
+"
 
-let s:dirname = expand("<sfile>:p:h")
+if &compatible
+	set nocompatible
+endif
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
+"
+" General
+"
 
-set rtp+=~/.vim/bundle/Vundle.vim
+color lettuce
+"color iceberg
 
-call vundle#begin()
-exe "source " . s:dirname . "/.vim/.vundles"
-call vundle#end()
+filetype on
+filetype indent on
+filetype plugin on
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COLOR
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-:set t_Co=256 " 256 colors
-:set background=dark
-:color lettuce
-":color grb256
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GUI
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EDITING CONFIGURATION
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-set nu
-" allow unsaved background buffers and remember marks/undo for them
-set hidden
-" remember more commands and search history
-set history=10000
-
-set expandtab
-set smarttab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-
-set autoindent
-set laststatus=2
-set showmatch
-set incsearch
-set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-" highlight current line
-" set cursorline
-set cmdheight=1
-set switchbuf=useopen
-"set showtabline=2
-set winwidth=79
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-" set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
-" Don't make backups at all
-set nobackup
-set nowritebackup
-" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
-" Enable highlighting for syntax
 syntax on
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
 
-hi LineNr ctermfg=241 guifg=#626262 "rgb=98,98,98
+"
+" Overrides
+"
 
-filetype plugin indent on
-" use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
-" make tab completion for files/buffers act like bash
-set wildmenu
-let mapleader=","
-" Fix slow O inserts
-:set timeout timeoutlen=1000 ttimeoutlen=100
-" Normally, Vim messes with iskeyword when you open a shell file. This can
-" leak out, polluting other file types even after a 'set ft=' change. This
-" variable prevents the iskeyword change so it can't hurt anyone.
-let g:sh_noisk=1
-" Modelines (comments that set vim options on a per-file basis)
-set modeline
-set modelines=3
-" Turn folding off for real, hopefully
-set foldmethod=syntax
-"set nofoldenable
-" Insert only one space when joining lines that contain sentence-terminating
-" punctuation like `.`.
-set nojoinspaces
-" If a file is changed outside of vim, automatically reload it without asking
-set autoread
+let mapleader=','
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MACROS
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let @1 = 'Akl                                                                                079ldwj'
-let @2 = 'Akl                                                          039ldwj'
+"
+" Settings
+"
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" augroup vimrc_autocmds
-"   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"   autocmd BufEnter * match OverLength /\%82v.*/
-" augroup END
+set autoread              " automatically reload if changed outside of vim
+set foldmethod=syntax     " folding
+set history=10000         " set history count
+set mouse=a               " enable mouse
+set nu                    " show line numbers
+set ignorecase smartcase  " enable case-sensitive search only if case is detected
+set nojoinspaces          " insert only one space when joining lines that contain sentence-terminating punctuation like `.`.
+set showcmd               " show incomplete commands
+set switchbuf=useopen
+set wildmenu              " emacs like tab completion
+set wildmode=longest,list " bash like tab completion
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STATUS LINE
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" fix slow O inserts
+set timeout
+set timeoutlen=1000
+set ttimeoutlen=100
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SYNTAX
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" soft tabs
+set shiftwidth=2          " eanble soft tabs
+set softtabstop=2         " enable soft tabs
+set tabstop=2             " enable soft tabs
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: CTRLP
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~  " MacOSX/Linux
+" status line
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-let g:ctrlp_working_path_mode = 'ra'
+" close buffer and keep the split
+nnoremap <C-c> :bp\|bd #<CR>
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
 
-"let g:ctrlp_custom_ignore = {
-"\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-"\ 'file': '\.exe$\|\.so$\|\.dll$',
-"\ 'link': 'some_bad_symbolic_links',
-"\ }
+"
+" Plugins
+"
 
-" let g:ctrlp_max_files = 0
-" let g:ctrlp_max_depth = 50
+call plug#begin()
 
-" nmap <leader>f :CtrlPBuffer<CR>
-" inoremap <leader><leader> <C-x><C-o>
+" Color
+"Plug 'cocopon/iceberg.vim'
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: Fugitive
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>ga :Git add %<CR><CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Git commit -v -q<CR>
+" General
+Plug 'junegunn/vim-easy-align'
+Plug 'preservim/nerdcommenter'
+"Plug 'el-iot/buffer-tree-explorer'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+
+" Completion
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --all' }
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Git Other
+" Plug 'jonas/tig'
+" Plug 'puremourning/vimspector'
+
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
+
+"
+" Plugin's Settings
+"
+
+" Airline
+
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD
+"let g:airline_theme='iceberg'
+
+""let g:airline#extensions#tabline#excludes = ['branches', 'index']
+""let g:airline#extensions#tabline#left_sep = ' '
+""let g:airline#extensions#tabline#left_alt_sep = '>'
+""let g:airline#extensions#tabline#show_tab_nr = 1
+""let g:airline#extensions#tabline#tab_nr_type = 1
+
+""let g:airline_powerline_fonts = 1
+
+""let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
+""let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+""let g:airline#extensions#tabline#tabs_label = 'buffers'       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+""let g:airline#extensions#tabline#buffers_label = 'tabs'    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+""let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
+""let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
+""let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+""let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
+"""let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+""let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
+""let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+
+" Easy Align
+
+xmap <leader> a <Plug>(EasyAlign)
+nmap <leader> a <Plug>(EasyAlign)
+
+" FZF
+
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader>f :Ag<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+
+" Fugitive
+
+nnoremap <silent> <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gt :Git commit -v -q %:p<CR>
-nnoremap <Leader>gd :Gdiffsplit <CR>
-nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gw :Gwrite<CR><CR>
-nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <Leader>gp :Ggrep<Space>
-nnoremap <Leader>gm :Gmove<Space>
-nnoremap <Leader>gb :Git branch<Space>
-nnoremap <Leader>go :Git checkout<Space>
-nnoremap <Leader>gps :Gpush<CR>
-nnoremap <Leader>gpl git pull<CR>
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: NERDCommenter
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDSpaceDelims = 1
-
-let g:NERDCustomDelimiters = {
-      \ 'c': { 'left': '//'},
-      \ 'rust': { 'left': '//'},
-      \ 'ruby': { 'left': '#'}
-      \ }
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: Rust
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rust_recommended_style = 0
-
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: YCM
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-nnoremap <leader>yjd :YcmCompleter GoTo<CR>
-nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
 
 
+"
+" Utils
+"
 
-
-
-
-
-nnoremap <C-b> :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
-
-
-let g:go_addtags_transform = 'camelcase'
-:command -range -nargs=* GoTagsAdd <line1>,<line2>call GoTagsAdd(<f-args>)
-function! GoTagsAdd(...) range
-  let filename = expand('%:t')
-  let line = a:firstline . ',' . a:lastline
-  let cmds = ['!gomodifytags']
-  call add(cmds, '-file')
-  call add(cmds, filename)
-  call add(cmds, '-line')
-  call add(cmds, line)
-  call add(cmds, '--skip-unexported')
-  call add(cmds, '-w --quiet')
-  let cmd = join(cmds, " ")
-
-  if a:0 > 0
-    let tags = a:1
-    if tags != '--'
-      call add(cmds, '-add-tags')
-      call add(cmds, tags)
-    endif
-  else
-    call add(cmds, '-add-tags json')
-  endif
-
-  if a:0 > 1
-    let options = a:2
-    if options != '--'
-      call add(cmds, '-add-options')
-      call add(cmds, options)
-    endif
-  else
-    call add(cmds, '-add-options json=omitempty')
-  endif
-
-  if a:0 > 2
-    let transform = a:2
-    if transform != '--'
-      call add(cmds, '-transform')
-      call add(cmds, transform)
-    endif
-  else
-    call add(cmds, '-transform camelcase')
-  endif
-
-  execute join(cmds, " ")
-endfunction
+augroup myvimrc
+	au!
+	au BufWritePost .vimrc source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
+augroup END
