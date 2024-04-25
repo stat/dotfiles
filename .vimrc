@@ -140,7 +140,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 
 " Fugitive
 
-nnoremap <silent> <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gt :Git commit -v -q %:p<CR>
 
 
