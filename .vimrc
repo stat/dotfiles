@@ -48,23 +48,23 @@ set switchbuf=useopen          " jump to buffer window
 set wildmenu                   " emacs like tab completion
 set wildmode=longest,list      " bash like tab completion
 
-                               " backspace
+" backspace
 set backspace=indent,eol,start " allow backspace over everything in insert mode
 
-                               " encoding
+" encoding
 set encoding=utf-8             " ensure encoding is utf-8
 set fileencoding=utf-8         " ensure files written as utf-8
 
-                               " fix slow O inserts
+" fix slow O inserts
 set timeout
 set timeoutlen=1000
 set ttimeoutlen=100
 
-                               " search
+" search
 set incsearch                  " show live matches
 set hlsearch                   " highlight all matches
 
-                               " soft tabs
+" soft tabs
 set expandtab                  " use spaces to insert tabs
 set smarttab                   " tabs in front of a line inserts blanks according to shiftwidth
 set shiftround                 " round indents to multiple of shiftwidth
