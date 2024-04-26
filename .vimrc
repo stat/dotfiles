@@ -31,6 +31,7 @@ let mapleader=','
 
 set autoread              " automatically reload if changed outside of vim
 set foldmethod=syntax     " folding
+set hidden                " enable switching from unsaved buffers
 set history=10000         " set history count
 set mouse=a               " enable mouse
 set nu                    " show line numbers
@@ -45,6 +46,10 @@ set wildmode=longest,list " bash like tab completion
 set timeout
 set timeoutlen=1000
 set ttimeoutlen=100
+
+"set showmatch
+"set incsearch
+set hlsearch
 
 " soft tabs
 set shiftwidth=2          " eanble soft tabs
@@ -93,8 +98,8 @@ call plug#end()
 
 " Easy Align
 
-xmap <leader> a <Plug>(EasyAlign)
-nmap <leader> a <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 " FZF
 
