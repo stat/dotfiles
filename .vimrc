@@ -29,32 +29,48 @@ let mapleader=','
 " Settings
 "
 
-set autoread              " automatically reload if changed outside of vim
-set foldmethod=syntax     " folding
-set hidden                " enable switching from unsaved buffers
-set history=10000         " set history count
-set mouse=a               " enable mouse
-set nu                    " show line numbers
-set ignorecase smartcase  " enable case-sensitive search only if case is detected
-set nojoinspaces          " insert only one space when joining lines that contain sentence-terminating punctuation like `.`.
-set showcmd               " show incomplete commands
-set switchbuf=useopen
-set wildmenu              " emacs like tab completion
-set wildmode=longest,list " bash like tab completion
+set autoindent                 " automatically indent based on previous line
+set autoread                   " automatically reload if changed outside of vim
+set foldmethod=syntax          " folding
+set hidden                     " enable switching from unsaved buffers
+set history=10000              " set history count
+set laststatus=2               " always show a status bar
+set winwidth=80                " minimal number of columns for the current window
+set mouse=a                    " enable mouse
+set nu                         " show line numbers
+set ignorecase smartcase       " enable case-sensitive search only if case is detected
+set nobackup                   " disable backup files
+set nowritebackup              " disable backups before overwriting
+set nojoinspaces               " disable multiple spaces after joining lines ending with punctuation
+set showcmd                    " show incomplete commands
+set showmatch                  " show closing bracket when a bracket is inserted
+set switchbuf=useopen          " jump to buffer window
+set wildmenu                   " emacs like tab completion
+set wildmode=longest,list      " bash like tab completion
 
-" fix slow O inserts
+                               " backspace
+set backspace=indent,eol,start " allow backspace over everything in insert mode
+
+                               " encoding
+set encoding=utf-8             " ensure encoding is utf-8
+set fileencoding=utf-8         " ensure files written as utf-8
+
+                               " fix slow O inserts
 set timeout
 set timeoutlen=1000
 set ttimeoutlen=100
 
-"set showmatch
-"set incsearch
-set hlsearch
+                               " search
+set incsearch                  " show live matches
+set hlsearch                   " highlight all matches
 
-" soft tabs
-set shiftwidth=2          " eanble soft tabs
-set softtabstop=2         " enable soft tabs
-set tabstop=2             " enable soft tabs
+                               " soft tabs
+set expandtab                  " use spaces to insert tabs
+set smarttab                   " tabs in front of a line inserts blanks according to shiftwidth
+set shiftround                 " round indents to multiple of shiftwidth
+set softtabstop=2              " number of spaces a tab counts for during editing
+set shiftwidth=2               " number of spaces to use for each step of (auto) indent
+set tabstop=2                  " number of spaces a tab in the file counts for
 
 " status line
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
