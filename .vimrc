@@ -40,7 +40,7 @@ set mouse=a                    " enable mouse
 set nu                         " show line numbers
 set ignorecase smartcase       " enable case-sensitive search only if case is detected
 set nobackup                   " disable backup files
-set nowritebackup              " disable backups before overwriting
+set nowritebackup              " disable temp backup before overwriting a file
 set nojoinspaces               " disable multiple spaces after joining lines ending with punctuation
 set showcmd                    " show incomplete commands
 set showmatch                  " show closing bracket when a bracket is inserted
