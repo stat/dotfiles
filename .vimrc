@@ -75,9 +75,6 @@ set tabstop=2                  " number of spaces a tab in the file counts for
 " status line
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-" close buffer and keep the split
-nnoremap <C-c> :bp\|bd #<CR>
-
 "
 " Plugins
 "
@@ -109,8 +106,11 @@ Plug 'rust-lang/rust.vim'
 call plug#end()
 
 "
-" Plugin's Settings
+" Mappings
 "
+
+" close buffer and keep the split
+nnoremap <C-c> :bp\|bd #<CR>
 
 " Easy Align
 
