@@ -3,7 +3,7 @@
 "
 
 if &compatible
-	set nocompatible
+  set nocompatible
 endif
 
 "
@@ -103,6 +103,16 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" Typescript
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install --frozen-lockfile --production',
+      \ 'branch': 'release/0.x'
+      \ }
+
 call plug#end()
 
 "
@@ -139,6 +149,6 @@ nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 
 "
 
 augroup myvimrc
-	au!
-	au BufWritePost .vimrc source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
+  au!
+  au BufWritePost .vimrc source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
 augroup END
