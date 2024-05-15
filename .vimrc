@@ -116,7 +116,7 @@ Plug 'prettier/vim-prettier', {
 call plug#end()
 
 "
-" Mappings
+" Configurations
 "
 
 " close buffer and keep the split
@@ -138,8 +138,14 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gt :Git commit -v -q %:p<CR>
 
+" NERDCommenter
+
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+
 " YCM
-"
+
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 nnoremap <leader>yjd :YcmCompleter GoTo<CR>
 nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
