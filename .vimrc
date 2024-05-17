@@ -108,10 +108,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install --frozen-lockfile --production',
-      \ 'branch': 'release/0.x'
-      \ }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 call plug#end()
 
@@ -137,6 +134,11 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gt :Git commit -v -q %:p<CR>
+
+" Prettier
+
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " NERDCommenter
 
