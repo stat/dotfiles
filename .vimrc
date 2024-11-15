@@ -20,6 +20,13 @@ filetype plugin on
 syntax on
 
 "
+" Directories
+"
+set backupdir=$HOME/.vim/backup//
+set directory=$HOME/.vim/swapfiles//
+
+
+"
 " Overrides
 "
 
@@ -40,6 +47,7 @@ set mouse=a                    " enable mouse
 set nu                         " show line numbers
 set ignorecase smartcase       " enable case-sensitive search only if case is detected
 set nobackup                   " disable backup files
+set noequalalways              " disable resize on close
 set nowritebackup              " disable temp backup before overwriting a file
 set nojoinspaces               " disable multiple spaces after joining lines ending with punctuation
 set showcmd                    " show incomplete commands
@@ -103,12 +111,18 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" Toml
+Plug 'cespare/vim-toml', { 'branch': 'main' }
+
 " Typescript
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
+
+" Formatters
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 
@@ -118,6 +132,12 @@ call plug#end()
 
 " close buffer and keep the split
 nnoremap <C-c> :bp\|bd #<CR>
+
+" Autoformat
+let g:formatdef_autopep8 = "'autopep8 - --max-line-length 120 --range '.a:firstline.' '.a:lastline"
+let g:formatters_python = ['autopep8']
+
+au BufWrite *py :Autoformat
 
 " Easy Align
 
@@ -133,7 +153,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 " Fugitive
 
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gt :Git commit -v -q %:p<CR>
+nnoremap <Leader>gt :Git commit -S -v -q %:p<CR>
 
 " Prettier
 
@@ -149,7 +169,7 @@ let g:NERDSpaceDelims = 1
 " YCM
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-nnoremap <leader>yjd :YcmCompleter GoTo<CR>
+nnoremap <leader>yjd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
 
 "
