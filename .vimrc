@@ -146,6 +146,8 @@ nmap <leader>a <Plug>(EasyAlign)
 
 " FZF
 
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>f :Ag<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -169,6 +171,7 @@ let g:NERDSpaceDelims = 1
 " YCM
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 nnoremap <leader>yjd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>yrr <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
 
