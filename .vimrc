@@ -146,10 +146,8 @@ nmap <leader>a <Plug>(EasyAlign)
 
 " FZF
 
-let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
-
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <Leader>f :Ag<CR>
+nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <Leader>f :Ag -g<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 
 " Fugitive
